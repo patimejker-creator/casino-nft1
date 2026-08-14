@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- ═══════════════════════════════════════════════════════════════
+       SECURITY HEADERS
+       ═══════════════════════════════════════════════════════════════ -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;
+                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+                 font-src 'self' https://fonts.gstatic.com;
+                 img-src 'self' data: blob: https://*.supabase.co https://*.supabase.in;
+                 media-src 'self' blob: https://*.supabase.co https://*.supabase.in;
+                 connect-src 'self' https://*.supabase.co https://*.supabase.in;
+                 frame-ancestors 'none';
+                 object-src 'none';
+                 base-uri 'self';
+                 form-action 'self';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy"
+        content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()">
+  <meta name="robots" content="noindex, nofollow">
+  <title>VETOC.RU — Администрирование</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800;900&family=Unbounded:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--blue:#1A3A6B;--blue-mid:#1E4D8C;--blue-light:#3A72C4;--blue-faint:#EBF1FC;--ink:#0D1B33;--muted:#5A6E8F;--line:#E4ECF7;--bg:#F5F8FF;--danger:#c92a35;--r:12px;--r-lg:20px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Onest',Arial,sans-serif}.shell{width:min(1060px,calc(100% - 32px));margin:0 auto;padding:38px 0 64px}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--blue)}.brand img{width:54px;height:54px;object-fit:contain;background:#fff;border-radius:var(--r);border:2px solid var(--line);box-shadow:0 2px 12px rgba(26,58,107,.08)}.brand strong{font-family:'Unbounded',sans-serif;font-size:18px;font-weight:800}.brand span{display:block;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-top:4px}.back,.button{border:1.5px solid var(--line);border-radius:var(--r);padding:11px 16px;background:#fff;color:var(--blue);font:700 14px 'Onest',Arial,sans-serif;text-decoration:none;cursor:pointer;transition:.2s}.back:hover,.button:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(26,58,107,.1)}.button.primary{background:var(--blue);border-color:var(--blue);color:#fff}.button.danger{border-color:#ffd5d9;color:var(--danger)}.panel{padding:30px;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:0 6px 30px rgba(26,58,107,.08)}h1,h2{font-family:'Unbounded',sans-serif;letter-spacing:-.02em;font-weight:800}h1{margin:0 0 12px;font-size:clamp(24px,4vw,34px)}h2{margin:0;font-size:20px}.intro{margin:0 0 24px;color:var(--muted);font-weight:600;line-height:1.6}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:grid;gap:7px}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}input,textarea,select{width:100%;padding:12px 14px;color:var(--ink);font:600 15px 'Onest',Arial,sans-serif;border:1.5px solid var(--line);border-radius:var(--r);background:#fff}textarea{min-height:120px;resize:vertical}.row{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;flex-wrap:wrap}.check{display:flex;align-items:center;gap:9px;font-weight:700}.check input{width:17px;height:17px}.status{min-height:22px;margin:14px 0 0;color:var(--muted);font-size:14px;font-weight:700}.status.error{color:var(--danger)}.hidden{display:none!important}.manager{margin-top:28px}.items{display:grid;gap:12px;margin-top:16px}.item{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:var(--r)}.item img,.item video{width:78px;height:64px;object-fit:cover;border-radius:8px;background:var(--blue-faint)}.item h3{margin:0;font-size:15px;font-weight:700}.item p{margin:4px 0 0;color:var(--muted);font-size:13px;font-weight:600}.type{display:inline-block;margin-top:6px;color:var(--blue-light);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.03em}.notice{padding:16px 18px;border-left:4px solid var(--blue-light);border-radius:0 var(--r) var(--r) 0;background:var(--blue-faint);color:var(--blue);font-size:14px;line-height:1.6;font-weight:500}@media(max-width:680px){.shell{width:min(100% - 24px,1060px);padding-top:22px}.top{align-items:flex-start;flex-direction:column}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.item{grid-template-columns:64px 1fr}.item img,.item video{width:64px;height:56px}.item .button{grid-column:1/-1}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top"><a class="brand" href="index.html"><img src="assets/vetoc-logo.jpg" alt="VETOC"><span><strong>VETOC.RU</strong><span>Администрирование сайта</span></span></a><a class="back" href="index.html">На сайт</a></header>
+
+    <section class="panel" id="setup-panel">
+      <h1>Подключение хранилища</h1>
+      <p class="intro">Чтобы войти и загружать материалы, сначала укажите данные Supabase в файле <code>assets/site-config.js</code>, затем выполните SQL-файл из этой папки.</p>
+      <p class="notice">После подключения эта страница будет доступна только пользователям, которым вы создали учётную запись в Supabase Authentication.</p>
+    </section>
+
+    <section class="panel hidden" id="login-panel">
+      <h1>Вход администратора</h1>
+      <p class="intro">Используйте e-mail и пароль учётной записи администратора.</p>
+      <form id="login-form" class="form-grid"><div class="field full"><label for="email">E-mail</label><input id="email" type="email" autocomplete="email" required></div><div class="field full"><label for="password">Пароль</label><input id="password" type="password" autocomplete="current-password" required></div><div class="field full"><button class="button primary" type="submit">Войти</button></div></form>
+      <p class="status" id="login-status"></p>
+    </section>
+
+    <section class="hidden" id="admin-panel">
+      <div class="panel"><div class="top"><div><h1>Материалы сайта</h1><p class="intro" style="margin:8px 0 0">Загружайте отзывы, фотографии, видео и сертификаты. Опубликованные материалы сразу появятся на главной странице.</p></div><button class="button" type="button" id="signout">Выйти</button></div>
+        <form id="content-form" class="form-grid">
+          <div class="field"><label for="kind">Раздел</label><select id="kind" required><option value="review">Отзыв</option><option value="event_photo">Фото с мероприятия</option><option value="video">Видео</option><option value="hall">Фотография зала</option><option value="certificate">Сертификат</option></select></div>
+          <div class="field"><label for="title">Заголовок</label><input id="title" maxlength="120" required placeholder="Например: Практика по хирургии"></div>
+          <div class="field"><label for="author">Автор отзыва или подпись</label><input id="author" maxlength="120" placeholder="Например: Анна, ветеринарный врач"></div>
+          <div class="field"><label for="media">Файл</label><input id="media" type="file" accept="image/*,video/*"></div>
+          <div class="field full"><label for="body">Текст отзыва или описание</label><textarea id="body" maxlength="2000" placeholder="Текст для публикации"></textarea></div>
+          <label class="check field full"><input id="published" type="checkbox" checked> Опубликовать сразу</label>
+          <div class="field full"><button class="button primary" id="save" type="submit">Загрузить и опубликовать</button></div>
+        </form>
+        <p class="status" id="content-status"></p>
+      </div>
+      <section class="panel manager"><h2>Загруженные материалы</h2><div class="items" id="items"></div></section>
+    </section>
+  </main>
+  <script src="assets/site-config.js"></script>
+  <!-- Версия зафиксирована. При обновлении — проверить release notes Supabase и обновить вручную. -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/dist/umd/supabase.js"
+          crossorigin="anonymous"></script>
+  <script>
+  /*
+   * SECURITY HARDENING v2 — admin.html
+   * ─────────────────────────────────────────────────────────────────────
+   * [SEC-1] Нет innerHTML с данными из БД — все DOM-узлы создаются через
+   *         createElement / textContent. XSS через БД невозможен.
+   * [SEC-2] URL медиафайлов валидируются: разрешены только *.supabase.co
+   *         и *.supabase.in. Произвольные URL отвергаются.
+   * [SEC-3] Файлы: допускаются только image/* и video/*; имя файла
+   *         санируется (только a-z0-9._-); максимум 50 МБ для изображений,
+   *         200 МБ для видео.
+   * [SEC-4] Login rate-limit: максимум 5 попыток за 10 минут; после
+   *         блокировки кнопка деактивируется с обратным отсчётом.
+   * [SEC-5] Подтверждение удаления — встроенный inline-диалог вместо
+   *         window.confirm() (confirm блокируется во фреймах и неожиданно
+   *         может быть переопределён вредоносным скриптом).
+   * [SEC-6] Все строки, попадающие в DOM, передаются только через
+   *         textContent, setAttribute с явными именами атрибутов или
+   *         data-атрибуты, не через innerHTML.
+   * ─────────────────────────────────────────────────────────────────────
+   */
+  (function () {
+    "use strict";
+
+    /* ── конфиг ─────────────────────────────────────────────────────── */
+    var config = window.VETOC_CONFIG || {};
+    var configured = config.supabaseUrl && config.supabaseAnonKey;
+
+    var setupPanel   = document.getElementById("setup-panel");
+    var loginPanel   = document.getElementById("login-panel");
+    var adminPanel   = document.getElementById("admin-panel");
+    var loginStatus  = document.getElementById("login-status");
+    var contentStatus = document.getElementById("content-status");
+    var itemsEl      = document.getElementById("items");
+
+    if (!configured) return;
+    setupPanel.classList.add("hidden");
+    loginPanel.classList.remove("hidden");
+
+    var client = window.supabase.createClient(config.supabaseUrl, config.supabaseAnonKey, {
+      auth: { persistSession: true, autoRefreshToken: true }
+    });
+
+    /* ── [SEC-2] валидация URL медиа ────────────────────────────────── */
+    var ALLOWED_MEDIA_RE = /^https:\/\/[a-z0-9-]+\.(supabase\.co|supabase\.in)\//i;
+    function isSafeMediaUrl(url) {
+      if (!url || typeof url !== "string") return false;
+      return ALLOWED_MEDIA_RE.test(url);
+    }
+
+    /* ── helpers ─────────────────────────────────────────────────────── */
+    function setStatus(el, msg, isError) {
+      el.textContent = msg || "";
+      el.classList.toggle("error", Boolean(isError));
+    }
+
+    function setText(el, val) { el.textContent = String(val || ""); }
+
+    /* ── [SEC-1] создание превью через DOM API ───────────────────────── */
+    function buildPreview(item) {
+      if (!item.media_url || !isSafeMediaUrl(item.media_url)) {
+        return document.createElement("div");
+      }
+      var el = document.createElement(item.kind === "video" ? "video" : "img");
+      el.setAttribute("src", item.media_url); /* src — атрибут, не innerHTML */
+      if (item.kind === "video") { el.muted = true; }
+      else { el.alt = ""; }
+      return el;
+    }
+
+    /* ── [SEC-1] построение карточки материала ───────────────────────── */
+    function buildItemCard(item) {
+      /* Валидируем UUID из БД — не доверяем произвольной строке как data-атрибуту */
+      var safeId = /^[0-9a-f-]{36}$/i.test(String(item.id)) ? item.id : "";
+      var safePath = typeof item.media_path === "string"
+        ? item.media_path.replace(/[^a-zA-Z0-9/_.-]/g, "") : "";
+
+      var article = document.createElement("article");
+      article.className = "item";
+      article.dataset.id   = safeId;
+      article.dataset.path = safePath;
+
+      article.appendChild(buildPreview(item));
+
+      var info = document.createElement("div");
+
+      var h3 = document.createElement("h3");
+      setText(h3, item.title);
+      info.appendChild(h3);
+
+      var p = document.createElement("p");
+      setText(p, item.author || item.body || "Без описания");
+      info.appendChild(p);
+
+      var typeSpan = document.createElement("span");
+      typeSpan.className = "type";
+      setText(typeSpan, item.kind + (item.is_published ? " · опубликовано" : " · черновик"));
+      info.appendChild(typeSpan);
+
+      article.appendChild(info);
+
+      /* ── [SEC-5] кнопка удаления без confirm() ─────────────────────── */
+      var delBtn = document.createElement("button");
+      delBtn.className = "button danger";
+      delBtn.type = "button";
+      delBtn.dataset.delete = safeId;
+      delBtn.textContent = "Удалить";
+      article.appendChild(delBtn);
+
+      return article;
+    }
+
+    /* ── [SEC-5] встроенный inline-диалог подтверждения ─────────────── */
+    function confirmInline(button, onConfirm) {
+      if (button.dataset.confirming) return; /* уже открыт */
+      button.dataset.confirming = "1";
+
+      var orig = button.textContent;
+      button.textContent = "Подтвердить удаление";
+      button.style.background = "var(--danger)";
+      button.style.color = "#fff";
+      button.style.borderColor = "var(--danger)";
+
+      var timer = setTimeout(function () {
+        reset();
+      }, 4000);
+
+      button.addEventListener("click", function handler() {
+        button.removeEventListener("click", handler);
+        clearTimeout(timer);
+        reset();
+        onConfirm();
+      }, { once: true });
+
+      function reset() {
+        delete button.dataset.confirming;
+        button.textContent = orig;
+        button.style.background = "";
+        button.style.color = "";
+        button.style.borderColor = "";
+      }
+    }
+
+    /* ── [SEC-4] login rate-limit ────────────────────────────────────── */
+    var LOGIN_MAX = 5;
+    var LOGIN_WINDOW_MS = 10 * 60 * 1000; /* 10 минут */
+    var loginAttempts = [];
+
+    function isLoginBlocked() {
+      var now = Date.now();
+      loginAttempts = loginAttempts.filter(function(t){ return now - t < LOGIN_WINDOW_MS; });
+      return loginAttempts.length >= LOGIN_MAX;
+    }
+
+    function recordLoginAttempt() { loginAttempts.push(Date.now()); }
+
+    function blockLoginButton(submitBtn) {
+      var remaining = Math.ceil((LOGIN_WINDOW_MS - (Date.now() - loginAttempts[0])) / 1000);
+      submitBtn.disabled = true;
+      var interval = setInterval(function() {
+        remaining--;
+        if (remaining <= 0) {
+          clearInterval(interval);
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Войти";
+          loginAttempts = [];
+        } else {
+          submitBtn.textContent = "Подождите " + remaining + " с";
+        }
+      }, 1000);
+      submitBtn.textContent = "Подождите " + remaining + " с";
+    }
+
+    /* ── [SEC-3] валидация файла ────────────────────────────────────── */
+    var ALLOWED_TYPES = /^(image\/(jpeg|png|webp|gif)|video\/(mp4|webm|quicktime|x-msvideo))$/;
+    var SIZE_LIMITS = { image: 50 * 1024 * 1024, video: 200 * 1024 * 1024 };
+
+    function validateFile(file) {
+      if (!ALLOWED_TYPES.test(file.type)) {
+        throw new Error("Недопустимый тип файла. Разрешены: JPEG, PNG, WEBP, GIF, MP4, WEBM.");
+      }
+      var isVideo = file.type.startsWith("video/");
+      var limit = isVideo ? SIZE_LIMITS.video : SIZE_LIMITS.image;
+      if (file.size > limit) {
+        throw new Error("Файл превышает лимит: " + (limit / 1024 / 1024) + " МБ для " + (isVideo ? "видео" : "изображений") + ".");
+      }
+    }
+
+    function sanitizeFileName(name) {
+      /* убираем всё кроме a-z0-9._- ; сохраняем расширение */
+      return name.replace(/[^a-zA-Z0-9._-]/g, "-").replace(/-{2,}/g, "-").slice(0, 80);
+    }
+
+    /* ── показ/скрытие панелей ──────────────────────────────────────── */
+    function showAdmin()  { loginPanel.classList.add("hidden"); adminPanel.classList.remove("hidden"); loadItems(); }
+    function showLogin()  { adminPanel.classList.add("hidden"); loginPanel.classList.remove("hidden"); }
+
+    /* ── загрузка списка материалов ─────────────────────────────────── */
+    async function loadItems() {
+      var result = await client.from("vetoc_content").select("*").order("created_at", { ascending: false });
+      if (result.error) { setStatus(contentStatus, result.error.message, true); return; }
+
+      /* очищаем через textContent (не innerHTML) */
+      while (itemsEl.firstChild) { itemsEl.removeChild(itemsEl.firstChild); }
+
+      if (!result.data.length) {
+        var empty = document.createElement("p");
+        empty.className = "intro";
+        empty.textContent = "Материалов пока нет.";
+        itemsEl.appendChild(empty);
+        return;
+      }
+
+      result.data.forEach(function(item) {
+        itemsEl.appendChild(buildItemCard(item));
+      });
+    }
+
+    /* ── форма входа ─────────────────────────────────────────────────── */
+    document.getElementById("login-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      var submitBtn = e.target.querySelector("[type=submit]");
+
+      if (isLoginBlocked()) {
+        blockLoginButton(submitBtn);
+        setStatus(loginStatus, "Превышено число попыток входа. Подождите.", true);
+        return;
+      }
+
+      setStatus(loginStatus, "Выполняется вход...");
+      recordLoginAttempt();
+
+      var result = await client.auth.signInWithPassword({
+        email:    document.getElementById("email").value,
+        password: document.getElementById("password").value
+      });
+
+      if (result.error) {
+        if (isLoginBlocked()) blockLoginButton(submitBtn);
+        setStatus(loginStatus, result.error.message, true);
+        return;
+      }
+      showAdmin();
+    });
+
+    /* ── кнопка выхода ───────────────────────────────────────────────── */
+    document.getElementById("signout").addEventListener("click", async function () {
+      await client.auth.signOut();
+      showLogin();
+    });
+
+    /* ── форма загрузки материала ───────────────────────────────────── */
+    document.getElementById("content-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      var saveBtn = document.getElementById("save");
+      saveBtn.disabled = true;
+      setStatus(contentStatus, "Загрузка материала...");
+
+      var file = document.getElementById("media").files[0];
+      var mediaPath = null;
+      var mediaUrl  = null;
+
+      try {
+        if (file) {
+          validateFile(file); /* [SEC-3] */
+          mediaPath = "uploads/" + Date.now() + "-" + sanitizeFileName(file.name);
+          var upload = await client.storage.from("vetoc-media").upload(mediaPath, file, {
+            cacheControl: "3600", upsert: false
+          });
+          if (upload.error) throw upload.error;
+          mediaUrl = client.storage.from("vetoc-media").getPublicUrl(mediaPath).data.publicUrl;
+          if (!isSafeMediaUrl(mediaUrl)) throw new Error("Неожиданный URL хранилища. Обратитесь к администратору.");
+        }
+
+        var record = {
+          kind:         document.getElementById("kind").value,
+          title:        document.getElementById("title").value.trim().slice(0, 120),
+          author:       document.getElementById("author").value.trim().slice(0, 120) || null,
+          body:         document.getElementById("body").value.trim().slice(0, 2000) || null,
+          media_path:   mediaPath,
+          media_url:    mediaUrl,
+          is_published: document.getElementById("published").checked
+        };
+
+        var insert = await client.from("vetoc_content").insert(record);
+        if (insert.error) throw insert.error;
+
+        e.target.reset();
+        document.getElementById("published").checked = true;
+        setStatus(contentStatus, "Материал сохранён.");
+        await loadItems();
+      } catch (err) {
+        setStatus(contentStatus, err.message || "Не удалось сохранить материал.", true);
+      }
+
+      saveBtn.disabled = false;
+    });
+
+    /* ── удаление через inline-confirm [SEC-5] ───────────────────────── */
+    itemsEl.addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-delete]");
+      if (!btn) return;
+
+      if (btn.dataset.confirming) return; /* клик по самой кнопке подтверждения */
+
+      confirmInline(btn, async function () {
+        var card = btn.closest(".item");
+        var id   = btn.dataset.delete;
+        if (!/^[0-9a-f-]{36}$/i.test(id)) return; /* ещё раз валидируем UUID */
+        btn.disabled = true;
+
+        var del = await client.from("vetoc_content").delete().eq("id", id);
+        if (del.error) {
+          setStatus(contentStatus, del.error.message, true);
+          btn.disabled = false;
+          return;
+        }
+
+        if (card && card.dataset.path) {
+          await client.storage.from("vetoc-media").remove([card.dataset.path]);
+        }
+        setStatus(contentStatus, "Материал удалён.");
+        await loadItems();
+      });
+    });
+
+    /* ── восстановление сессии ───────────────────────────────────────── */
+    client.auth.getSession().then(function (result) {
+      if (result.data.session) showAdmin();
+    });
+
+  }());
+  </script>
+</body>
+</html>

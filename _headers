@@ -1,0 +1,21 @@
+# ═══════════════════════════════════════════════════════════════════
+# Netlify / Cloudflare Pages — HTTP Security Headers
+# GitHub Pages не поддерживает _headers нативно; используйте
+# Cloudflare Proxy поверх GitHub Pages для применения этих заголовков.
+# ═══════════════════════════════════════════════════════════════════
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://*.supabase.co https://*.supabase.in; media-src 'self' blob: https://*.supabase.co https://*.supabase.in; connect-src 'self' https://*.supabase.co https://*.supabase.in https://cdn.jsdelivr.net; frame-ancestors 'none'; object-src 'none'; base-uri 'self'; form-action 'self';
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Cache-Control: public, max-age=3600
+
+/admin.html
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store, no-cache
+
+/assets/site-config.js
+  Cache-Control: no-store, no-cache
